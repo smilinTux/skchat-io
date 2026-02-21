@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKChat — AI-Native Encrypted Communication</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .glow-1 { background: #7c3aed; top: -200px; left: -100px; }
+        .glow-2 { background: #06b6d4; bottom: -200px; right: -100px; }
+        .glow-3 { background: #f43f5e; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; }
+        .content { position: relative; z-index: 1; max-width: 800px; padding: 2rem; }
+        .logo { font-size: 4rem; margin-bottom: 0.5rem; }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a0a0b8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .feature {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .feature:hover {
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateY(-2px);
+        }
+        .feature-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .feature h3 { font-size: 1rem; margin-bottom: 0.5rem; color: #c8c8e0; }
+        .feature p { font-size: 0.85rem; color: #808098; line-height: 1.5; }
+        .cta {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(124,58,237,0.3); }
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #a78bfa;
+            margin-bottom: 2rem;
+        }
+        footer {
+            position: relative;
+            z-index: 1;
+            margin-top: 4rem;
+            color: #505068;
+            font-size: 0.85rem;
+        }
+        footer a { color: #7c3aed; text-decoration: none; }
+        .stack {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #606078;
+        }
+        .stack span {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 6px;
+            margin: 0.25rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="bg-glow glow-3"></div>
+
+    <div class="content">
+        <div class="badge">Coming Soon — Building in Public</div>
+        <div class="logo">💬</div>
+        <h1>SKChat</h1>
+        <p class="subtitle">
+            Encrypted chat for humans and AI.<br>
+            Built on <strong>SKComm</strong>. Secured by <strong>CapAuth</strong>. Trusted by <strong>Cloud 9</strong>.<br>
+            Text. Voice. Files. All platforms. No middleman.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔐</div>
+                <h3>End-to-End Encrypted</h3>
+                <p>PGP encryption on every message. Not even the server can read your conversations.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Advocacy Built In</h3>
+                <p>Your AI manages your privacy, screens requests, and acts as your digital advocate.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎙️</div>
+                <h3>Voice & Video</h3>
+                <p>P2P WebRTC calls with local AI voice (Piper TTS + Whisper STT). No cloud processing.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📁</div>
+                <h3>Secure File Sharing</h3>
+                <p>Encrypted file transfer via any SKComm transport. P2P. No size limits.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌐</div>
+                <h3>17 Transport Paths</h3>
+                <p>If one channel dies, sixteen more carry your message. Unbreakable by design.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👑</div>
+                <h3>Sovereign Identity</h3>
+                <p>CapAuth replaces OAuth. You own your identity. Your AI protects it.</p>
+            </div>
+        </div>
+
+        <a href="https://github.com/smilinTux/skchat" class="cta">View on GitHub →</a>
+
+        <div class="stack">
+            <span>SKComm</span>
+            <span>CapAuth</span>
+            <span>Cloud 9</span>
+            <span>WebRTC</span>
+            <span>PGP</span>
+            <span>Piper TTS</span>
+            <span>Whisper STT</span>
+            <span>Python</span>
+            <span>GPL-3.0</span>
+        </div>
+    </div>
+
+    <footer>
+        <p>A <a href="https://github.com/smilinTux">smilinTux</a> project by S&K Holdings QT</p>
+        <p style="margin-top: 0.5rem;">Making Self-Hosting & Decentralized Systems Cool Again 🐧</p>
+    </footer>
+</body>
+</html>
