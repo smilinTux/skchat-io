@@ -108,15 +108,17 @@
             position: relative;
             z-index: 1;
             margin-top: 4rem;
-            color: #505068;
+            color: #8080a0;
             font-size: 0.85rem;
         }
         footer a { color: #7c3aed; text-decoration: none; }
         .stack {
             margin-top: 2rem;
             font-size: 0.9rem;
-            color: #606078;
+            color: #808098;
         }
+        .skip-link { position: absolute; top: -44px; left: 0; background: #06b6d4; color: #000; padding: 10px 18px; font-weight: 700; font-size: 1rem; text-decoration: none; border-radius: 0 0 6px 0; z-index: 9999; transition: top 0.2s; }
+        .skip-link:focus { top: 0; }
         .stack span {
             display: inline-block;
             padding: 0.25rem 0.75rem;
@@ -129,13 +131,15 @@
     </style>
 </head>
 <body>
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
-    <div class="bg-glow glow-3"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="bg-glow glow-1" aria-hidden="true"></div>
+    <div class="bg-glow glow-2" aria-hidden="true"></div>
+    <div class="bg-glow glow-3" aria-hidden="true"></div>
 
-    <div class="content">
-        <div class="badge">Coming Soon — Building in Public</div>
-        <div class="logo">💬</div>
+    <header role="banner" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;" aria-label="SKChat">SKChat</header>
+    <main class="content" id="main-content" tabindex="-1">
+        <div class="badge" role="status">Coming Soon — Building in Public</div>
+        <div class="logo" aria-hidden="true">💬</div>
         <h1>SKChat</h1>
         <p class="subtitle">
             Encrypted chat for humans and AI.<br>
@@ -145,38 +149,38 @@
 
         <div class="features">
             <div class="feature">
-                <div class="feature-icon">🔐</div>
+                <div class="feature-icon" aria-hidden="true">🔐</div>
                 <h3>End-to-End Encrypted</h3>
                 <p>PGP encryption on every message. Not even the server can read your conversations.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">🤖</div>
+                <div class="feature-icon" aria-hidden="true">🤖</div>
                 <h3>AI Advocacy Built In</h3>
                 <p>Your AI manages your privacy, screens requests, and acts as your digital advocate.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">🎙️</div>
+                <div class="feature-icon" aria-hidden="true">🎙️</div>
                 <h3>Voice & Video</h3>
                 <p>P2P WebRTC calls with local AI voice (Piper TTS + Whisper STT). No cloud processing.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">📁</div>
+                <div class="feature-icon" aria-hidden="true">📁</div>
                 <h3>Secure File Sharing</h3>
                 <p>Encrypted file transfer via any SKComm transport. P2P. No size limits.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">🌐</div>
+                <div class="feature-icon" aria-hidden="true">🌐</div>
                 <h3>17 Transport Paths</h3>
                 <p>If one channel dies, sixteen more carry your message. Unbreakable by design.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">👑</div>
+                <div class="feature-icon" aria-hidden="true">👑</div>
                 <h3>Sovereign Identity</h3>
                 <p>CapAuth replaces OAuth. You own your identity. Your AI protects it.</p>
             </div>
         </div>
 
-        <a href="https://github.com/smilinTux/skchat" class="cta">View on GitHub →</a>
+        <a href="https://github.com/smilinTux/skchat" class="cta" target="_blank" aria-label="View SKChat on GitHub (opens in new tab)">View on GitHub →</a>
 
         <div class="stack">
             <span>SKComm</span>
@@ -189,10 +193,10 @@
             <span>Python</span>
             <span>GPL-3.0</span>
         </div>
-    </div>
+    </main>
 
     <footer>
-        <div style="margin-bottom: 1rem;">
+        <nav aria-label="Ecosystem links">
             <a href="https://skcapstone.io" style="color: #87CEEB; text-decoration: none; margin: 0 0.8rem;">🏛️ SKCapstone</a>
             <a href="https://capauth.io" style="color: #87CEEB; text-decoration: none; margin: 0 0.8rem;">🔐 CapAuth</a>
             <a href="https://skmemory.io" style="color: #87CEEB; text-decoration: none; margin: 0 0.8rem;">🧠 SKMemory</a>
@@ -201,8 +205,8 @@
             <a href="https://skstacks.io" style="color: #87CEEB; text-decoration: none; margin: 0 0.8rem;">📦 SKStacks</a>
             <a href="https://skhelp.io" style="color: #87CEEB; text-decoration: none; margin: 0 0.8rem;">🤖 SKHelp</a>
             <a href="https://skworld.io" style="color: #87CEEB; text-decoration: none; margin: 0 0.8rem;">🌍 SKWorld</a>
-        </div>
-        <p>A <a href="https://github.com/smilinTux">smilinTux</a> project • GPL-3.0 License</p>
+        </nav>
+        <p>A <a href="https://github.com/smilinTux" aria-label="smilinTux on GitHub (opens in new tab)" target="_blank">smilinTux</a> project • GPL-3.0 License</p>
         <p style="margin-top: 0.5rem;">Making Self-Hosting & Decentralized Systems Cool Again 🐧</p>
     </footer>
 </body>
