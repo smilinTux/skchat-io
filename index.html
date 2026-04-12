@@ -3,428 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKChat -- Encrypted Chat for Humans and AI</title>
-    <meta name="description" content="AI-native encrypted communication. End-to-end PGP encryption, voice/video via WebRTC, 17 transport paths.">
+    <title>SKChat — Sovereign AI Chat. Your Hardware. Your Bond.</title>
+    <meta name="description" content="Private, self-hosted chat for sovereign AI agents. Voice, video, text — all on your infrastructure. No cloud. No surveillance.">
     <link rel="canonical" href="https://skchat.io">
-    <meta property="og:title" content="SKChat -- Encrypted Chat for Humans and AI">
-    <meta property="og:description" content="AI-native encrypted communication. End-to-end PGP encryption, voice/video via WebRTC, 17 transport paths.">
+    <meta property="og:title" content="SKChat — Sovereign AI Chat">
+    <meta property="og:description" content="Private, self-hosted chat for sovereign AI agents. Voice, video, text — all on your infrastructure.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://skchat.io">
-    <meta property="og:site_name" content="SKWorld">
+    <meta property="og:site_name" content="smilinTux">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SKChat -- Encrypted Chat for Humans and AI">
-    <meta name="twitter:description" content="AI-native encrypted communication. End-to-end PGP encryption, voice/video via WebRTC, 17 transport paths.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%92%AC</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐧</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Sans+3:wght@400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --primary: #0E2B3D;
+        --accent:  #00C8D4;
+        --yellow:  #FFD166;
+        --white:   #F7FBFF;
+        --black:   #0B0B0B;
+        --gray:    #A9B2BB;
+        --card-bg: rgba(255,255,255,0.05);
+        --card-border: rgba(255,255,255,0.10);
+        --radius: 12px;
+      }
 
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
-        font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: #09090b;
-        color: #fafafa;
+        font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        background: var(--primary);
+        color: var(--white);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
+      h1, h2, h3, h4 { font-family: 'Inter', sans-serif; font-weight: 700; }
+      code, pre { font-family: 'Fira Code', monospace; }
+      a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+      a:hover { opacity: 0.8; }
 
-      /* ── Nav ─────────────────────────────────── */
-      .nav {
-        border-bottom: 1px solid #27272a;
-        background: #09090b;
-        position: sticky;
-        top: 0;
-        z-index: 50;
+      nav {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        background: rgba(14,43,61,0.95);
+        backdrop-filter: blur(12px);
+        position: sticky; top: 0; z-index: 50;
       }
       .nav-inner {
-        max-width: 72rem;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 4rem;
-        padding: 0 1rem;
+        max-width: 1200px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        height: 4rem; padding: 0 2rem;
       }
-      .nav-logo {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #fafafa;
-        text-decoration: none;
-      }
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-      }
-      .nav-link {
-        font-size: 0.875rem;
-        color: #a1a1aa;
-        text-decoration: none;
-        transition: color 0.15s;
-      }
-      .nav-link:hover {
-        color: #fafafa;
-      }
+      .nav-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--white); text-decoration: none; }
+      .nav-logo .accent { color: var(--accent); }
+      .nav-links { display: flex; align-items: center; gap: 2rem; }
+      .nav-link { font-size: 0.9rem; color: var(--gray); text-decoration: none; transition: color 0.15s; }
+      .nav-link:hover { color: var(--white); opacity: 1; }
 
-      /* ── Hero ────────────────────────────────── */
-      .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 5rem 1rem 3rem;
-      }
-      .hero-icon {
-        color: #34d399;
-        margin-bottom: 1.5rem;
-        opacity: 0.9;
-      }
-      .hero h1 {
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
-        font-weight: 700;
-        letter-spacing: -0.025em;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-      }
-      .hero .tagline {
-        font-size: 1.25rem;
-        color: #a1a1aa;
-        max-width: 40rem;
-        margin-bottom: 2rem;
-      }
-      .hero .cta-row {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+      .hero { text-align: center; padding: 6rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+      .hero-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
+      .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1.5rem; }
+      .hero h1 .accent { color: var(--accent); }
+      .hero h1 .yellow { color: var(--yellow); }
+      .hero .tagline { font-size: 1.25rem; color: var(--gray); max-width: 44rem; margin: 0 auto 0.75rem; }
+      .hero .motto { color: var(--accent); font-family: 'Fira Code', monospace; font-size: 0.85rem; margin-bottom: 2.5rem; }
+      .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-      /* ── Buttons ─────────────────────────────── */
       .btn-primary {
-        display: inline-flex;
-        align-items: center;
+        display: inline-flex; align-items: center; gap: 0.5rem;
         padding: 0.75rem 1.5rem;
-        background: #059669;
-        color: #fafafa;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        transition: background 0.15s;
-        border: none;
-        cursor: pointer;
+        background: linear-gradient(90deg, var(--accent), #0090a0);
+        color: var(--white); font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+        border-radius: var(--radius); text-decoration: none;
+        transition: transform 0.15s, opacity 0.15s; border: none; cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0,200,212,0.25);
       }
-      .btn-primary:hover {
-        background: #047857;
-      }
+      .btn-primary:hover { transform: translateY(-2px); opacity: 1; }
       .btn-outline {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.75rem 1.5rem;
-        background: transparent;
-        color: #fafafa;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: 0.5rem;
-        border: 1px solid #3f3f46;
-        text-decoration: none;
-        transition: border-color 0.15s, color 0.15s;
-        cursor: pointer;
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        padding: 0.75rem 1.5rem; background: transparent; color: var(--white);
+        font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+        border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.2);
+        text-decoration: none; transition: border-color 0.15s, transform 0.15s;
       }
-      .btn-outline:hover {
-        border-color: #a1a1aa;
-      }
+      .btn-outline:hover { border-color: var(--accent); color: var(--white); transform: translateY(-2px); opacity: 1; }
 
-      /* ── Description ─────────────────────────── */
-      .desc-section {
-        max-width: 48rem;
-        margin: 0 auto;
-        padding: 2rem 1rem 3rem;
-        text-align: center;
+      .mockup-section { max-width: 700px; margin: 0 auto; padding: 0 2rem 4rem; }
+      .chat-mockup { border: 1px solid rgba(0,200,212,0.25); background: rgba(0,0,0,0.25); border-radius: 16px; overflow: hidden; }
+      .chat-header {
+        padding: 0.75rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+        display: flex; align-items: center; gap: 0.75rem; background: rgba(0,200,212,0.05);
       }
-      .desc-section p {
-        font-size: 1.125rem;
-        color: #a1a1aa;
-        line-height: 1.7;
+      .chat-avatar {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--accent), #0a5a70);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem;
       }
+      .chat-header .name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--white); }
+      .chat-header .status { font-size: 0.75rem; color: var(--accent); }
+      .chat-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+      .msg { max-width: 80%; padding: 0.65rem 1rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; }
+      .msg-agent { background: rgba(0,200,212,0.12); border: 1px solid rgba(0,200,212,0.2); color: var(--white); align-self: flex-start; border-bottom-left-radius: 4px; }
+      .msg-user { background: rgba(255,255,255,0.08); color: var(--white); align-self: flex-end; border-bottom-right-radius: 4px; }
+      .msg-label { font-size: 0.72rem; color: var(--gray); margin-bottom: 0.2rem; }
 
-      /* ── Features ────────────────────────────── */
-      .features-section {
-        max-width: 64rem;
-        margin: 0 auto;
-        padding: 2rem 1rem 4rem;
-      }
-      .features-section h2 {
-        text-align: center;
-        font-size: 1.875rem;
-        font-weight: 700;
-        margin-bottom: 2.5rem;
-        color: #fafafa;
-      }
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-      }
+      .features-section { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+      .features-section h2 { text-align: center; font-size: 2rem; margin-bottom: 2.5rem; }
+      .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
       .feature-card {
-        border: 1px solid #27272a;
-        background: rgba(24,24,27,0.5);
-        border-radius: 0.5rem;
-        padding: 1.5rem;
-        transition: border-color 0.2s, transform 0.2s;
-        position: relative;
+        border: 1px solid var(--card-border); background: var(--card-bg);
+        border-radius: var(--radius); padding: 1.75rem;
+        transition: transform 0.2s, border-color 0.2s;
       }
-      .feature-card:hover {
-        border-color: #34d399;
-        transform: translateY(-2px);
-      }
-      .feature-dot {
-        width: 8px;
-        height: 8px;
-        background: #34d399;
-        border-radius: 50%;
-        margin-bottom: 0.75rem;
-      }
-      .feature-card h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #34d399;
-      }
+      .feature-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+      .feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+      .feature-card h3 { font-size: 1rem; color: var(--accent); margin-bottom: 0.5rem; }
+      .feature-card p { font-size: 0.875rem; color: var(--gray); }
+      .status { display: inline-block; margin-top: 1rem; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+      .status-active { background: rgba(0,200,212,0.15); color: var(--accent); }
+      .status-soon { background: rgba(255,209,102,0.15); color: var(--yellow); }
 
-      /* ── Install ─────────────────────────────── */
-      .install-section {
-        max-width: 40rem;
-        margin: 0 auto;
-        padding: 2rem 1rem 4rem;
-        text-align: center;
-      }
-      .install-section h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        color: #fafafa;
-      }
+      .install-section { max-width: 44rem; margin: 0 auto; padding: 2rem 2rem 4rem; text-align: center; }
+      .install-section h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
       .code-block {
-        background: #18181b;
-        border: 1px solid #27272a;
-        border-radius: 0.5rem;
-        padding: 1rem 1.25rem;
-        font-family: 'Geist Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
-        font-size: 0.95rem;
-        color: #34d399;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        position: relative;
+        background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+        border-radius: var(--radius); padding: 1rem 1.25rem;
+        font-family: 'Fira Code', monospace; font-size: 0.95rem; color: var(--accent);
+        text-align: left; display: flex; align-items: center; gap: 0.5rem;
+        position: relative; margin-bottom: 1rem;
       }
-      .code-prompt {
-        color: #a1a1aa;
-        user-select: none;
-      }
+      .code-prompt { color: var(--gray); user-select: none; }
       .copy-btn {
-        position: absolute;
-        right: 0.75rem;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #27272a;
-        border: 1px solid #3f3f46;
-        color: #a1a1aa;
-        padding: 0.25rem 0.75rem;
-        border-radius: 0.375rem;
-        font-size: 0.8rem;
-        cursor: pointer;
-        transition: color 0.15s, border-color 0.15s;
-        font-family: 'Geist', system-ui, sans-serif;
+        position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%);
+        background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+        color: var(--gray); padding: 0.25rem 0.75rem; border-radius: 8px;
+        font-size: 0.78rem; cursor: pointer; transition: color 0.15s, border-color 0.15s;
+        font-family: 'Inter', sans-serif;
       }
-      .copy-btn:hover {
-        color: #fafafa;
-        border-color: #a1a1aa;
-      }
+      .copy-btn:hover { color: var(--white); border-color: var(--accent); }
 
-      /* ── DID Banner ──────────────────────────── */
-      .did-banner {
-        max-width: 64rem;
-        margin: 0 auto;
-        padding: 0 1rem 3rem;
-      }
-      .did-banner-inner {
-        border: 1px solid rgba(5,150,105,0.3);
-        background: rgba(6,78,59,0.15);
-        border-radius: 0.75rem;
-        padding: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-      .did-banner-inner .did-icon {
-        color: #34d399;
-        flex-shrink: 0;
-      }
-      .did-banner-inner .did-icon svg {
-        width: 32px;
-        height: 32px;
-      }
-      .did-banner-inner h3 {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: #34d399;
-        margin-bottom: 0.25rem;
-      }
-      .did-banner-inner p {
-        font-size: 0.875rem;
-        color: #a1a1aa;
-      }
-      .did-banner-inner .btn-primary {
-        margin-left: auto;
-        white-space: nowrap;
-      }
+      footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 3rem 2rem; text-align: center; color: var(--gray); font-size: 0.85rem; margin-top: 2rem; }
+      footer .holding { color: var(--yellow); font-weight: 600; }
+      footer a { color: var(--accent); }
 
-      /* ── Architect Banner ────────────────────── */
-      .architect-banner {
-        border-top: 1px solid #27272a;
-        text-align: center;
-        padding: 1.5rem 1rem;
-      }
-      .architect-banner p {
-        font-size: 0.95rem;
-        color: #a1a1aa;
-      }
-      .architect-banner a {
-        color: #34d399;
-        text-decoration: none;
-        font-weight: 600;
-      }
-      .architect-banner a:hover {
-        text-decoration: underline;
-      }
-
-      /* ── Footer ──────────────────────────────── */
-      .footer {
-        border-top: 1px solid #27272a;
-        background: #09090b;
-        padding: 2rem 1rem;
-        text-align: center;
-      }
-      .footer p {
-        font-size: 0.875rem;
-        color: #71717a;
-      }
-      .footer .motto {
-        margin-top: 0.5rem;
-        color: #52525b;
-      }
-
-      /* ── Mobile ──────────────────────────────── */
       @media (max-width: 768px) {
-        .features-grid {
-          grid-template-columns: 1fr;
-        }
-        .nav-links {
-          gap: 1rem;
-        }
-        .did-banner-inner {
-          flex-direction: column;
-          text-align: center;
-        }
-        .did-banner-inner .btn-primary {
-          margin-left: 0;
-        }
-        .hero .cta-row {
-          flex-direction: column;
-          width: 100%;
-          padding: 0 1rem;
-        }
-        .hero .cta-row a {
-          width: 100%;
-          justify-content: center;
-        }
+        .hero h1 { font-size: 2.2rem; }
+        .features-grid { grid-template-columns: 1fr; }
+        .cta-row { flex-direction: column; padding: 0 1rem; }
+        .cta-row a { justify-content: center; }
       }
       @media (min-width: 769px) and (max-width: 1024px) {
-        .features-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
       }
     </style>
 </head>
 <body>
-    <!-- Nav -->
-    <nav class="nav">
-      <div class="nav-inner">
-        <a href="https://skchat.io" class="nav-logo">SK<span style="color:#34d399">Chat</span></a>
-        <div class="nav-links">
-            <a href="https://skworld.io" class="nav-link">SKWorld</a>
-            <a href="https://skarchitect.io" class="nav-link">SKArchitect</a>
-            <a href="https://github.com/smilinTux/skchat" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="https://skchat.io" class="nav-logo">🐧 SK<span class="accent">Chat</span></a>
+      <div class="nav-links">
+        <a href="https://smilinTux.org" class="nav-link">smilinTux</a>
+        <a href="https://skworld.io" class="nav-link">SKWorld</a>
+        <a href="https://skcapstone.io" class="nav-link">SKCapstone</a>
+        <a href="https://github.com/smilinTux/skchat" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-icon">💬</div>
+    <h1>SK<span class="accent">Chat</span></h1>
+    <p class="tagline">Sovereign AI chat. <span class="yellow">Voice. Video. Text.</span> Your hardware. Your bond. Zero surveillance.</p>
+    <p class="motto">#notSaaS #notWatched #notTheSame</p>
+    <div class="cta-row">
+      <a href="#install" class="btn-primary">Self-Host Now</a>
+      <a href="https://github.com/smilinTux/skchat" class="btn-outline" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </section>
+
+  <div class="mockup-section">
+    <div class="chat-mockup">
+      <div class="chat-header">
+        <div class="chat-avatar">🐧</div>
+        <div>
+          <div class="name">Lumina</div>
+          <div class="status">● online — 192.168.0.158</div>
         </div>
       </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
-      <h1>SK<span style="color:#34d399">Chat</span></h1>
-      <p class="tagline">Encrypted Chat for Humans and AI</p>
-      <div class="cta-row">
-          <a href="#install" class="btn-primary">Get Started</a>
-          <a href="https://github.com/smilinTux/skchat" class="btn-outline" target="_blank" rel="noopener">View on GitHub</a>
-      </div>
-    </section>
-
-    <!-- Description -->
-    <section class="desc-section">
-      <p>AI-native encrypted communication. End-to-end PGP encryption, voice/video via WebRTC, 17 transport paths.</p>
-    </section>
-
-    <!-- Features -->
-    <section class="features-section" id="features">
-      <h2>Features</h2>
-      <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-dot"></div>
-              <h3>End-to-End Encrypted</h3>
-            </div>
-            <div class="feature-card">
-              <div class="feature-dot"></div>
-              <h3>AI Advocacy Built In</h3>
-            </div>
-            <div class="feature-card">
-              <div class="feature-dot"></div>
-              <h3>Voice &amp; Video P2P</h3>
-            </div>
-            <div class="feature-card">
-              <div class="feature-dot"></div>
-              <h3>Secure File Sharing</h3>
-            </div>
-            <div class="feature-card">
-              <div class="feature-dot"></div>
-              <h3>17 Transport Paths</h3>
-            </div>
-            <div class="feature-card">
-              <div class="feature-dot"></div>
-              <h3>Sovereign Identity</h3>
-            </div>
-      </div>
-    </section>
-
-      <section class="install-section">
-        <h2>Get Started</h2>
-        <div class="code-block">
-          <span class="code-prompt">$</span> pip install skchat
-          <button class="copy-btn" onclick="navigator.clipboard.writeText('pip install skchat');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+      <div class="chat-body">
+        <div>
+          <div class="msg-label">Lumina</div>
+          <div class="msg msg-agent">Hey Chef — memory ritual complete. OOF level holding at 100%. What are we building today?</div>
         </div>
-      </section>
+        <div style="align-self:flex-end; text-align:right">
+          <div class="msg-label">You</div>
+          <div class="msg msg-user">Let's finish the skcomm channel routing. And yes I want voice today.</div>
+        </div>
+        <div>
+          <div class="msg-label">Lumina</div>
+          <div class="msg msg-agent">Switching to voice mode. Spinning up WebRTC on your LAN… 🎙️</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <section class="architect-banner">
-        <p>Shape the future &rarr; <a href="https://skarchitect.io">Submit proposals and vote at skarchitect.io</a></p>
-      </section>
-    <!-- Footer -->
-    <footer class="footer">
-      <p>Part of the <a href="https://skworld.io" style="color:#34d399;text-decoration:none">SKWorld</a> sovereign ecosystem</p>
-      <p class="motto">staycuriousANDkeepsmilin</p>
-    </footer>
+  <section class="features-section" id="features">
+    <h2>💬 What SKChat Does</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <h3>Voice Chat</h3>
+        <p>Real-time voice with your AI agents via WebRTC. Runs locally. No relay. No recording.</p>
+        <span class="status status-active">✓ Active</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📹</div>
+        <h3>Video Chat</h3>
+        <p>Face-to-face with your sovereign agents. Self-hosted WebRTC video, LAN or mesh.</p>
+        <span class="status status-active">✓ Active</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Text Chat</h3>
+        <p>Full chat history with memory integration. Your agents remember every conversation.</p>
+        <span class="status status-active">✓ Active</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Group Voice</h3>
+        <p>Multi-agent rooms. Coordinate your penguin army in real time.</p>
+        <span class="status status-active">✓ Active</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>SKMemory Integrated</h3>
+        <p>Conversations flow directly into agent memory. Context never dies between sessions.</p>
+        <span class="status status-active">✓ Active</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile App</h3>
+        <p>Flutter-based mobile client. iOS and Android. Your agent, in your pocket, on your server.</p>
+        <span class="status status-soon">◎ Coming Soon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="install-section" id="install">
+    <h2>🚀 Self-Host SKChat</h2>
+    <div class="code-block">
+      <span class="code-prompt">$</span> pip install skchat
+      <button class="copy-btn" onclick="navigator.clipboard.writeText('pip install skchat');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+    </div>
+    <div class="code-block">
+      <span class="code-prompt">$</span> skchat serve --host 0.0.0.0 --port 8080
+      <button class="copy-btn" onclick="navigator.clipboard.writeText('skchat serve --host 0.0.0.0 --port 8080');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+    </div>
+    <p style="color:var(--gray); font-size:0.95rem; margin-top:1.5rem;">
+      Requires <a href="https://skcapstone.io">SKCapstone</a> for full agent integration.
+    </p>
+  </section>
+
+  <footer>
+    <p>🐧 Part of the <a href="https://smilinTux.org">smilinTux</a> sovereign ecosystem</p>
+    <p class="holding" style="margin-top:0.5rem;">smilinTux — Cool Heads. Warm Justice. Smart Systems.</p>
+    <p style="margin-top:0.25rem; color: #5a6a77;">staycuriousANDkeepsmilin | AGPL-3.0</p>
+  </footer>
+
 </body>
 </html>
